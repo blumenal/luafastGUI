@@ -8,8 +8,6 @@ Acesse a seção Releases para baixar a versão já compilada ou instale o pytho
 Observação
 O Luafast não necessita do Steam Tools ou greenluma.
 
-Possui visual sobreo e interface minimalista focando em tudo que o usuário Steam necessita para gerenciar o acesso aos games Steam.
-
 ##Tela inicial.
 <img width="925" height="649" alt="Captura de tela 2025-10-17 033423" src="https://github.com/user-attachments/assets/2bb65c9a-74e4-4221-88a6-0f2dca7b65f2" />
 
