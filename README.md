@@ -1,5 +1,5 @@
 ## LuaFast GUI 
-Dolwnloader de Steam Depot Manifest
+Downloader de Steam Depot Manifest
 Está é a versão em modo janela do LuaFast.
 
 ## Como Usar
