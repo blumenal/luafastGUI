@@ -3,9 +3,8 @@ Downloader de Steam Depot Manifest
 Está é a versão em modo janela do LuaFast.
 
 ## Como Usar
-Acesse a seção Releases para baixar a ultima versão.
-Em seguida, acesse a opção instalar Jogos e insira o App ID ou o nome do game.
-Selecione game desejado precione o botão para instalar, reinicie a steam pelo próprio luafast.
+INSTALE O PYTHON 3.13.9 E requirements.txt
+ARQUIVO VARIABLE CONSTA KEY DE EXEMPLO PARA CASO QUEIRA CONEXÃO COM O GOOGLE DRIVER.
 
 ## Observação
 O Luafast não necessita do Steam Tools ou greenluma.
