@@ -1,6 +1,5 @@
 ## LuaFast GUI 
-Downloader de Steam Depot Manifest
-Está é a versão em modo janela do LuaFast.
+PROJETO EM PRIVADO! APENAS FICARA PÚBLICO O SERVIDOR DE KEYS.
 
 ## Como Usar
 INSTALE O PYTHON 3.13.9 E requirements.txt
