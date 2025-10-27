@@ -3,21 +3,21 @@ import subprocess
 import time
 import os
 from pathlib import Path
-from config_manager import get_steam_path 
+from config_manager import get_steam_path  # Import corrigido
 
 if os.name == 'nt':
     CREATE_NO_WINDOW = 0x08000000
 else:
     CREATE_NO_WINDOW = 0
 
-
+# Cores ANSI
 VERMELHO = "\033[91m"
 VERDE = "\033[92m"
 AMARELO = "\033[93m"
 AZUL = "\033[94m"
 RESET = "\033[0m"
 
-
+# Lista unificada de processos da Steam para encerrar
 PROCESSOS_STEAM = [
     "steam.exe",
     "steamwebhelper.exe",
@@ -45,7 +45,7 @@ def encerrar_steam_processos():
                 print(f"{VERDE}[✓] Processo {processo} encerrado{RESET}")
                 processos_encerrados += 1
         except Exception as e:
-          
+            # Ignora erros quando o processo não é encontrado
             pass
     
     if processos_encerrados > 0:
@@ -118,7 +118,7 @@ def menu_reiniciar():
     elif escolha == "3":
         apenas_reiniciar_steam()
     elif escolha == "0":
-        return True 
+        return True  # Indica que deve voltar
     else:
         print(f"{VERMELHO}Opção inválida!{RESET}")
     
@@ -126,7 +126,7 @@ def menu_reiniciar():
     return False
 
 if __name__ == "__main__":
-
+    # Quando executado diretamente, mostra o menu em loop
     while True:
         voltar = menu_reiniciar()
         if voltar:

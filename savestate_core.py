@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 class GameProfile:
-   
+    """Representa um perfil de jogo para backup"""
     
     def __init__(self, name: str, game_name: str, appid: str, save_paths: List[str]):
         self.name = name
@@ -17,7 +17,7 @@ class GameProfile:
         self.last_backup = None
 
 class SaveStateManager:
-
+    """Gerenciador principal do SaveState simplificado"""
     
     def __init__(self, backup_root: Path = None):
         self.backup_root = backup_root or Path("log/savestate_backups")
@@ -27,7 +27,7 @@ class SaveStateManager:
         self.load_profiles()
     
     def load_profiles(self):
-
+        """Carrega perfis do arquivo de configuração"""
         try:
             if self.config_file.exists():
                 with open(self.config_file, 'r', encoding='utf-8') as f:
@@ -46,7 +46,7 @@ class SaveStateManager:
             print(f"Erro ao carregar perfis: {e}")
     
     def save_profiles(self):
- 
+        """Salva perfis no arquivo de configuração"""
         try:
             data = {}
             for profile_id, profile in self.profiles.items():

@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from config_manager import get_steam_subpath
 
-
+# Cores ANSI
 NEUTRO = "\033[97m"
 AZUL = "\033[94m"
 VERDE = "\033[92m"
@@ -14,16 +14,17 @@ AMARELO = "\033[93m"
 VERMELHO = "\033[91m"
 RESET = "\033[0m"
 
-
+# Símbolos
 SUCESSO = f"{VERDE}✔{RESET}"
 FALHA = f"{VERMELHO}✘{RESET}"
 
-
+# Caminhos
 STPLUG_PATH = get_steam_subpath("config/stplug-in")
 DEPOTCACHE_PATH = get_steam_subpath("depotcache")
 BACKUP_ROOT = Path("log/backup")
 
 
+# === UTILIDADES VISUAIS ===
 
 def limpar_tela():
     os.system("cls" if os.name == "nt" else "clear")
@@ -151,7 +152,7 @@ async def fazer_backup():
             input("\nOpção inválida. Pressione Enter para tentar novamente...")
 
 
-
+# === RESTAURAÇÃO ===
 
 def listar_backups_disponiveis():
     return sorted([p for p in BACKUP_ROOT.iterdir() if p.is_dir()])
@@ -228,6 +229,7 @@ async def restaurar():
             input("\nOpção inválida. Pressione Enter para tentar novamente...")
 
 
+# === MENU PRINCIPAL ===
 
 async def menu_principal():
     while True:

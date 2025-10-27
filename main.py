@@ -7,7 +7,7 @@ import shutil
 import sys
 import subprocess
 import traceback
-import requests 
+import requests  # Adicionado para downloads públicos
 from pathlib import Path
 
 # ANSI Colors
@@ -20,11 +20,11 @@ AMARELO_ESCURO = "\033[33m"
 CYAN = "\033[96m"
 RESET = "\033[0m"
 
-
+# Paths
 CAMINHO_LOG = os.path.join("log", "acordo.json")
 STEAM_CONFIG_FILE = os.path.join("log", "steam_config.json")
 
-
+# Cache para informações do menu
 menu_cache = {
     "dll_status": None,
     "activation_info": None,
@@ -148,7 +148,7 @@ def ensure_script_downloaded_crack(script_name, max_retries=3):
 
     for attempt in range(max_retries):
         try:
-
+            # Mapeamento de arquivos públicos
             PUBLIC_FILES = {
                 "hid.rar": "1B3aWT0sg4jkAo-pCTAbsmEoIEZWJ-2hQ",
                 "CreamInstaller.rar": "1nT3t1eie8jurWvdDd4xsJJNKBXCyBMl3", 
@@ -174,9 +174,9 @@ def ensure_script_downloaded_crack(script_name, max_retries=3):
             else:
                 raise
 
-
+# ================= FUNÇÕES DE ACORDO E ATIVAÇÃO =================
 def verificar_acordo():
-   
+    """Verifica o acordo e a configuração da Steam"""
     try:
         os.makedirs("log", exist_ok=True)
         os.makedirs(get_steam_all_path(), exist_ok=True)
@@ -268,7 +268,7 @@ def exibir_banner():
     print(f"Se gostou do App {VERDE}faça uma doação e ajude a manter o LuaFast funcionando{RESET}.")
 
 def atualizar_cache_menu():
- 
+    """Atualiza as informações do menu em background"""
     try:
         from dll_manager import check_and_install
         menu_cache["dll_status"] = check_and_install()[1]
@@ -291,7 +291,7 @@ def atualizar_cache_menu():
     menu_cache["last_updated"] = time.time()
 
 def exibir_menu():
- 
+    """Exibe o menu completo após pré-carregar todas as informações"""
     atualizar_cache_menu()
     
     dll_status = menu_cache.get("dll_status", f"{VERMELHO}X Steam Não configurada{RESET}")
@@ -299,7 +299,7 @@ def exibir_menu():
     limpar_tela()
     exibir_banner()
     
- 
+    # REMOVIDA LINHA DO CÓDIGO DE ATIVAÇÃO
     print(f"{CYAN}Status: {dll_status}{RESET}\n")
     
     print("     ╔═════════════════════════════════════════════╗")
@@ -613,11 +613,11 @@ def autocrack():
         print(f"{VERDE}\nAguardando finalização...{RESET}")
         processo.wait()
 
-  
+        # Exclusão do executável
         if os.path.exists(exe_path):
             os.remove(exe_path)
 
-    
+        # Exclusão das pastas TEMP e Goldberg
         steamall = get_steam_all_path()
         for pasta in ["TEMP", "Goldberg"]:
             caminho = steamall / pasta
@@ -632,10 +632,10 @@ def autocrack():
         traceback.print_exc()
         input("Pressione Enter para continuar...")
         
-
+# ================= FUNÇÃO PRINCIPAL =================
 def main():
     try:
-       
+        # VERIFICAÇÃO INICIAL DA STEAM (MANTIDA)
         if not steam_exists():
             limpar_tela()
             current_path = get_steam_path()
@@ -650,14 +650,14 @@ def main():
                 time.sleep(3)
                 sys.exit(1)
 
-   
+        # GARANTIR PASTAS NECESSÁRIAS (MANTIDA)
         os.makedirs("log", exist_ok=True)
         os.makedirs(get_steam_all_path(), exist_ok=True)
         
-     
+        # VERIFICAÇÃO INICIAL DA DLL (MANTIDA)
         print(f"{AZUL}Verificando requisitos do sistema...{RESET}", end='\r')
         
-   
+        # VERIFICAÇÃO SIMPLES DA DLL
         from dll_manager import check_and_install
         dll_status, dll_message = check_and_install()
         
@@ -666,7 +666,7 @@ def main():
             time.sleep(3)
             return False
 
-     
+        # SE CHEGOU ATÉ AQUI, INICIA O MENU DIRETAMENTE
         menu()
 
     except Exception as e:
